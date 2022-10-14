@@ -1,0 +1,9 @@
+numpy
+flask
+werkzeug
+gunicorn
+librosa
+audioread
+torch
+torchvision
+torchaudio
