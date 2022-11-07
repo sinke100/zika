@@ -33,7 +33,12 @@ def vek_brojac(l):
     return sve
 
 filepath = './'
-resnet_model = [torch.load(by(i), map_location='cpu') for i in modeli]
+modeli_nazivi = ['res1.pt','res2.pt']
+for i,j in zip(modeli_nazivi,modeli):
+    with open(i,'wb') as f: f.write(j)
+resnet_model = [torch.load(i, map_location='cpu') for i in modeli_nazivi]
+
+#resnet_model = [torch.load(by(i), map_location='cpu') for i in modeli]
 
 def spec_to_image(specs, eps=1e-6):
     scaled = []
