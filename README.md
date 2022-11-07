@@ -1,5 +1,5 @@
 # zika
-sound prediction
+Music genre prediction
 
 # pip install -r req.txt
 
