@@ -57,7 +57,8 @@ def spec_to_image(specs, eps=1e-6):
     return scaled
 
 def get_melspectrogram_db(file_path, sr=44100, n_fft=2205, hop_length=441, n_mels=300, fmin=0, fmax=20000, top_db=200):
-    wav,sr = librosa.load(file_path,sr=sr,mono=True)
+    aro = audioread.ffdec.FFmpegAudioFile(file_path)
+    wav,sr = librosa.load(aro,sr=sr,mono=True)
     
     if wav.shape[0]<6*sr:
         wav=np.pad(wav,(0,6*sr-wav.shape[0]),mode='constant',constant_values=(0, 0))
