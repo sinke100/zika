@@ -1,5 +1,5 @@
 # zika
-sound prediction
+sound prediction based on ESC-50 dataset
 
 # pip install -r req.txt
 
