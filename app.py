@@ -36,7 +36,13 @@ filepath = './'
 modeli_nazivi = ['res1.pt','res2.pt']
 for i,j in zip(modeli_nazivi,modeli):
     with open(i,'wb') as f: f.write(j)
-resnet_model = [torch.load(i, map_location='cpu') for i in modeli_nazivi]
+opcije = [modeli_nazivi,[modeli_nazivi[0]],[modeli_nazivi[1]]]
+for j in opcije:
+    try:
+        resnet_model = [torch.load(i, map_location='cpu') for i in j]
+    except _pickle.UnpicklingError: continue
+assert resnet_model
+print(len(resnet_model))
 
 #resnet_model = [torch.load(by(i), map_location='cpu') for i in modeli]
 
