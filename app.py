@@ -13,7 +13,9 @@ modeli = os.listdir('models')
 modeli = ['models/'+i for i in modeli]
 models = []
 for i in modeli:
-    with open(i,'rb') as f: models.append(f.read())
+    with open(i,'rb') as f:
+        f.seek(0)
+        models.append(f.read())
 modeli = b''.join(models).split(b'This is model splitter')
 device = torch.device('cpu')
 def vek_brojac(l):
