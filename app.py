@@ -11,11 +11,10 @@ from io import BytesIO as by
 
 modeli = os.listdir('models')
 modeli = ['models/'+i for i in modeli]
+modeli.sort()
 models = []
 for i in modeli:
-    with open(i,'rb') as f:
-        f.seek(0)
-        models.append(f.read())
+    with open(i,'rb') as f: models.append(f.read())
 modeli = b''.join(models).split(b'This is model splitter')
 device = torch.device('cpu')
 def vek_brojac(l):
@@ -31,7 +30,7 @@ def vek_brojac(l):
     sve = sorted([[i,j] for j,i in k.items()],reverse=True)
     sve = sve[0][1]
     return sve
-
+'''
 filepath = './'
 modeli_nazivi = ['res1.pt','res2.pt']
 for i,j in zip(modeli_nazivi,modeli):
@@ -43,8 +42,8 @@ for j in opcije:
     except: continue
 assert resnet_model
 print(len(resnet_model))
-
-#resnet_model = [torch.load(by(i), map_location='cpu') for i in modeli]
+'''
+resnet_model = [torch.load(by(i), map_location='cpu') for i in modeli]
 
 def spec_to_image(specs, eps=1e-6):
     scaled = []
